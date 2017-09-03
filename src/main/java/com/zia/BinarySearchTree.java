@@ -1,5 +1,6 @@
 package com.zia;
 
+
 public class BinarySearchTree {
 
     private static class TreeNode {
@@ -16,5 +17,14 @@ public class BinarySearchTree {
         } else {
             return  getMin(root.left);
         }
+    }
+
+    private void printInOrderTraversal(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        printInOrderTraversal(root.left);
+        System.out.print(root.data + " ");
+        printInOrderTraversal(root.right);
     }
 }
