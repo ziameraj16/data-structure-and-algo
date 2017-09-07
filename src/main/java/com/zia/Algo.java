@@ -5,7 +5,19 @@ import java.util.Arrays;
 public class Algo {
 
     public static void main(String[] args) {
-        System.out.println(lcm(12, 8));
+        divideWithoutDivision(14, 6);
+    }
+
+    private static void divideWithoutDivision(int a, int b) {
+        int dividend = a;
+        int divisor = b;
+        int quotient = 0;
+        while (dividend >= divisor) {
+            dividend = dividend - divisor;
+            quotient++;
+        }
+        System.out.println("Quotient is " + quotient);
+        System.out.println("Remainder is " + dividend);
     }
 
     // GCD - Eucid algorithm
