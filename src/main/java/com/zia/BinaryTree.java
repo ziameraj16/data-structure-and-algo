@@ -39,7 +39,7 @@ public class BinaryTree {
      */
     private static int getMaxValue(TreeNode root) {
         int max = Integer.MIN_VALUE;
-        int value = 0;
+        int value;
         int left, right;
         if (root != null) {
             value = root.data;

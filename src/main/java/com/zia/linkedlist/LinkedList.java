@@ -1,11 +1,11 @@
 package com.zia.linkedlist;
 
-public class ReverseLinkedList {
+public class LinkedList {
 
     private Node head;
 
     public static void main(String[] args) {
-        ReverseLinkedList obj = new ReverseLinkedList();
+        LinkedList obj = new LinkedList();
         Node head = new Node("Head");
         obj.addToList(head);
         obj.addToList(new Node("First"));
@@ -17,7 +17,6 @@ public class ReverseLinkedList {
         obj.print(head);
 
         System.out.println("<<<< REVERSED >>>>>");
-
         final Node reverseLinkedList = reverseLinkedList(head);
 
         obj.print(reverseLinkedList);
@@ -31,6 +30,28 @@ public class ReverseLinkedList {
         currentNode.next.next = currentNode;
         currentNode.next = null;
         return remaining;
+    }
+
+    /**
+     * 1) Use two pointers fast and slow
+     * 2) Move fast two nodes and slow one node in each iteration
+     * 3) If fast and slow meet then linked list contains cycle
+     * 4) if fast points to null or fast.next points to null then linked list is not cyclic
+     */
+    public boolean isCyclic() {
+        Node slow = head;
+        Node fast = head;
+
+        while (slow != null && fast != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+
+            if(fast == slow ){
+                return true;
+            }
+        }
+
+        return false;
     }
 
 
@@ -54,6 +75,8 @@ public class ReverseLinkedList {
         }
 
     }
+
+
 
     static class Node {
         private String data;
