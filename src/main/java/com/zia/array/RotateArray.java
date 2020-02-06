@@ -11,15 +11,15 @@ public class RotateArray {
         System.out.println(Arrays.toString(arr));
     }
 
-    private void leftRotate(int[] arr, int d, int n) {
+    private void leftRotate(int[] arr, int d, int length) {
         for (int i = 0; i < d; i++) {
-            leftRotateByOne(arr, n);
+            leftRotateByOne(arr, length);
         }
     }
 
-    private void leftRotateByOne(int[] arr, int n) {
+    private void leftRotateByOne(int[] arr, int length) {
         int temp = arr[0], i;
-        for (i = 0; i < n - 1; i++) {
+        for (i = 0; i < length - 1; i++) {
             arr[i] = arr[i+1];
         }
         arr[i] = temp;

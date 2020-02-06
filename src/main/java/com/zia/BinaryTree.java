@@ -59,7 +59,7 @@ public class BinaryTree {
     }
 
     /**
-     * 1. If node is null then return 0
+     * 1. If node is null then return
      * 2. Put node.data in array and increment len by 1.
      * 3. If encountered leaf node(i.e. node.left is null and node.right is null) then print array.
      * 4. Recursively visit left subtree and right subtree

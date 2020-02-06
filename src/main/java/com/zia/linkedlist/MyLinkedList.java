@@ -1,11 +1,11 @@
 package com.zia.linkedlist;
 
-public class LinkedList {
+public class MyLinkedList {
 
     private Node head;
 
     public static void main(String[] args) {
-        LinkedList obj = new LinkedList();
+        MyLinkedList obj = new MyLinkedList();
         Node head = new Node("Head");
         obj.addToList(head);
         obj.addToList(new Node("First"));
@@ -16,20 +16,35 @@ public class LinkedList {
 
         obj.print(head);
 
-        System.out.println("<<<< REVERSED >>>>>");
-        final Node reverseLinkedList = reverseLinkedList(head);
+        System.out.println("\n<<<< REVERSED >>>>>");
+        final Node reverseLinkedList = reverseLinkedListRecursion(head);
 
         obj.print(reverseLinkedList);
     }
 
-    public static Node reverseLinkedList(Node currentNode) {
+    public static Node reverseLinkedListRecursion(Node currentNode) {
+        MyLinkedList obj = new MyLinkedList();
+        obj.print(currentNode);
+        System.out.println();
         if (currentNode == null || currentNode.next == null) {
             return currentNode;
         }
-        Node remaining = reverseLinkedList(currentNode.next);
+        Node remaining = reverseLinkedListRecursion(currentNode.next);
         currentNode.next.next = currentNode;
         currentNode.next = null;
         return remaining;
+    }
+
+    private static Node reverseLinkedListIteration(Node currentNode) {
+        Node previousNode = null;
+        Node nextNode;
+        while (currentNode != null) {
+            nextNode = currentNode.next;
+            currentNode.next = previousNode;
+            previousNode = currentNode;
+            currentNode = nextNode;
+        }
+        return previousNode;
     }
 
     /**
@@ -54,11 +69,10 @@ public class LinkedList {
         return false;
     }
 
-
     private void print(Node head) {
         Node temp = head;
         while (temp != null) {
-            System.out.println(temp.data);
+            System.out.print(temp.data + "=>");
             temp = temp.next;
         }
     }
@@ -75,8 +89,6 @@ public class LinkedList {
         }
 
     }
-
-
 
     static class Node {
         private String data;
